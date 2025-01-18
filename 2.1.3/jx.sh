@@ -179,8 +179,6 @@ paysys_start(){
         echoFormat "Dang khoi dong Sword3PaySys.exe"
         /root/serversetup/paysyswin/startPaysys.sh
         sleepAbit 3
-        # Thêm dòng này ?? minimize c?a s? sau khi ch?y
-        wmctrl -F -r "Sword3PaySys.exe" -b add,hidden
         echoFormat "Da chay xong Sword3PaySys.exe"
     else
         echoFormat "Da co Sword3PaySys.exe dang chay"
@@ -199,8 +197,6 @@ relayserver_start(){
         echoFormat "Dang khoi dong S3RelayServer.exe"
         /root/serversetup/paysyswin/startS3RelayServer.sh
         sleepAbit 3
-        # Thêm dòng này ?? minimize c?a s? sau khi ch?y
-        wmctrl -F -r "S3RelayServer.exe" -b add,hidden
         echoFormat "Da chay xong S3RelayServer.exe"
     else
         echoFormat "Da co S3RelayServer.exe dang chaycd "
