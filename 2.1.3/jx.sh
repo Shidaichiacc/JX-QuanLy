@@ -145,11 +145,13 @@ gameserver_start(){
         xfce4-terminal --title=server1 --tab --working-directory="$GAMEPATH/server1" --command "./jx_linux_y"
         echoFormat "Dang chay jx_linux_y"
         
-        # Mở file backupdaemon
+        # Chạy chương trình backupdaemon
         if [ -f "$GAMEPATH/gateway/backupdaemon" ]; then
-            cat "$GAMEPATH/gateway/backupdaemon"
+            cd "$GAMEPATH/gateway"
+            ./backupdaemon
+            echoFormat "Da chay backupdaemon va cap nhat bang xep hang"
         else
-            echoFormat "Khong tim thay file backupdaemon"
+            echoFormat "Khong tim thay chuong trinh backupdaemon"
         fi
 
         # Thêm thông báo
@@ -158,7 +160,6 @@ gameserver_start(){
         echoFormat "Da co jx_linux_y dang chay"
     fi
 }
-
 
 gameserver_stop(){
     pkill -f './s3relay_y'
