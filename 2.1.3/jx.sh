@@ -144,10 +144,21 @@ gameserver_start(){
         cd $GAMEPATH/server1
         xfce4-terminal --title=server1 --tab --working-directory="$GAMEPATH/server1" --command "./jx_linux_y"
         echoFormat "Dang chay jx_linux_y"
+        
+        # Mở file backupdaemon
+        if [ -f "$GAMEPATH/gateway/backupdaemon" ]; then
+            cat "$GAMEPATH/gateway/backupdaemon"
+        else
+            echoFormat "Khong tim thay file backupdaemon"
+        fi
+
+        # Thêm thông báo
+        echoFormat "da cap nhat ban xep hang"
     else
         echoFormat "Da co jx_linux_y dang chay"
     fi
 }
+
 
 gameserver_stop(){
     pkill -f './s3relay_y'
