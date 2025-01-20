@@ -149,7 +149,8 @@ gameserver_start(){
         if [ -f "$GAMEPATH/gateway/backupdaemon" ]; then
             cd "$GAMEPATH/gateway"
             ./backupdaemon
-            echoFormat "Da chay backupdaemon va cap nhat bang xep hang"
+            echoFormat "Dang chay backupdaemon BXH"
+            sleepAbit 1
         else
             echoFormat "Khong tim thay chuong trinh backupdaemon"
         fi
@@ -159,6 +160,9 @@ gameserver_start(){
     else
         echoFormat "Da co jx_linux_y dang chay"
     fi
+        # Giữ terminal mở
+    echo "Press Enter to close the terminal..."
+    read
 }
 
 gameserver_stop(){
