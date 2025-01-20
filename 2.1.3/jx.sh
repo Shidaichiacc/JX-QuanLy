@@ -67,9 +67,38 @@ cleanUpLog(){
     rm -rf $GAMEPATH/gateway/s3relay/Logs/*
     rm -rf $GAMEPATH/gateway/s3relay/RelayRunData/*
     chmod -R 0777 $GAMEPATH
+	# Goi ham cleanup BXH
+    cleanBackup
     echoFormat "Da don dep xong server"
 }
+# Cleanup backup BXH
+cleanBackup(){
+    BACKUP_DIR="$GAMEPATH/gateway/Backup"
 
+    # Kiem tra thu muc ton tai
+    if [ -d "$BACKUP_DIR" ]; then
+        echoFormat "Bat dau xoa backup BXH"
+
+        #Lay danh sach theo thoi gian
+        FOLDERS=$(ls -1t "$BACKUP_DIR")
+
+        # Lấy thư mục cuối cùng (mới nhất)
+        LAST_FOLDER=$(ls -1t "$BACKUP_DIR" | head -n 1)
+
+        # Kiem tra cac thu muc  giu lai thu muc cuoi cung
+        for folder in $FOLDERS; do
+            if [ "$folder" != "$LAST_FOLDER" ]; then
+			echoFormat "Xoa thu muc: $folder"
+                rm -rf "$BACKUP_DIR/$folder"
+            fi
+        done
+		sleepAbit 1
+        echoFormat "Da giu lai thu muc cuoi cung: $LAST_FOLDER"
+		sleepAbit 2
+    else
+        echoFormat "Thu muc $BACKUP_DIR khong ton tai"
+    fi
+}
 syncConfig(){
     cd $APPPATH
     echoFormat $(php serverconfig.php $1 $2 $GAMEPATH)
