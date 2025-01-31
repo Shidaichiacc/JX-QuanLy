@@ -191,7 +191,7 @@ gameserver_start(){
     fi
         # Giữ terminal mở
     #echo "Press Enter to close the terminal..."
-    read
+    #read
 }
 
 gameserver_stop(){
