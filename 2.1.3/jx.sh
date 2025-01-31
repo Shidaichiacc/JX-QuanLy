@@ -190,7 +190,7 @@ gameserver_start(){
         echoFormat "Da co jx_linux_y dang chay"
     fi
         # Giữ terminal mở
-    echo "Press Enter to close the terminal..."
+    #echo "Press Enter to close the terminal..."
     read
 }
 
